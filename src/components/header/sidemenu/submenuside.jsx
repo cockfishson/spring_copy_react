@@ -1,7 +1,6 @@
 import React from "react";
 
 const SubmenuSide = ({ subs }) => {
-  console.log(subs);
   return (
     <ul className="submenu_side">
       {subs.map((sub, index) => {

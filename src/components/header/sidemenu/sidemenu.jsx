@@ -3,7 +3,6 @@ import { MENU_CONTENT } from "../../../data/header_content.js";
 import MainItemSide from "./mainitemside";
 
 const Sidemenu = (isOpen) => {
-  console.log(isOpen);
   return (
     <ul
       class="sidebar_menu"

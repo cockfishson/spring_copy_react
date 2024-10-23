@@ -3,28 +3,25 @@ import { CARDS_DEFAULT } from "../../data/card_content";
 
 const SearchInput = ({ SetCardsData }) => {
   const [SearchParameters, SetSearchParameters] = useState("");
-  const SearchExecution = () => {
-    SetSearchParameters(
-      SearchParameters.trim()
-        .toLowerCase()
-        .replace(/[.,@/#!$%^&*;:{}=\-_`~()]/g, "")
-    );
-    if (SearchParameters.length > 1) {
-      const result = CARDS_DEFAULT.filter((card_info) => {
-        return (
-          card_info.description.toLowerCase().includes(SearchParameters) ||
-          card_info.title.toLowerCase().includes(SearchParameters)
-        );
-      });
-      SetCardsData(result);
-    } else SetCardsData(CARDS_DEFAULT);
-  };
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      SearchExecution();
+      const trimmedSearch = SearchParameters.trim()
+        .toLowerCase()
+        .replace(/[.,@/#!$%^&*;:{}=\-_`~()]/g, "");
+      if (trimmedSearch.length > 1) {
+        const result = CARDS_DEFAULT.filter((card_info) => {
+          return (
+            card_info.description.toLowerCase().includes(trimmedSearch) ||
+            card_info.title.toLowerCase().includes(trimmedSearch)
+          );
+        });
+        SetCardsData(result);
+      } else {
+        SetCardsData(CARDS_DEFAULT);
+      }
     }, 300);
     return () => clearTimeout(delayDebounceFn);
-  }, [SearchParameters]);
+  }, [SearchParameters, SetCardsData]);
 
   return (
     <input
