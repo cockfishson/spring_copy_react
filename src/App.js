@@ -1,7 +1,7 @@
 import "./App.css";
-import Header from "./components/header/header";
+import ProjectsPage from "./components/projects_page";
 function App() {
-  return <Header />;
+  return <ProjectsPage />;
 }
 
 export default App;

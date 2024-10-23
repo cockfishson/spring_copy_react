@@ -391,7 +391,7 @@ body {
         display: block;
     }
 
-    submenu_side:hover {
+    .sub_txt_side:hover {
         color: #6CB52D;
     }
 
