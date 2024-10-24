@@ -1,6 +1,6 @@
 import HeaderDescription from "./description/header_descriprion/header_description";
 import DescriptionText from "./description/description_text/description_text";
-import { DESCRIPTION_DATA } from "../../data/description_content";
+import { DESCRIPTION_DATA } from "../../../data/description_content";
 import "./main_area.css";
 
 const MainArea = () => {

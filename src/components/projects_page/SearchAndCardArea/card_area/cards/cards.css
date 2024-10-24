@@ -22,7 +22,7 @@
 
 @media (max-width: 1020px) {
     .card {
-        max-width: 44vw;
+        max-width: 35vw;
         padding-top: 0px;
         height: auto;
         display: inline-block;
@@ -35,7 +35,7 @@
 @media (max-width: 800px) {
     .card {
         display: block;
-        width: 70%;
+        max-width: 70vw;
         margin-left: auto;
         margin-right: auto;
         margin-top: 3%;

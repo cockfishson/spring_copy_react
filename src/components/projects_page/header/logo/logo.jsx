@@ -1,4 +1,4 @@
-import LogoSvg from "../../../media/header_icons/logo.svg";
+import LogoSvg from "../../../../media/header_icons/logo.svg";
 import "./logo.css";
 
 const Logo = () => {
