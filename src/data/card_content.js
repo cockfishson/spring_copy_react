@@ -1,9 +1,9 @@
-import springBootSvg from "../media/spring-boot.svg";
-import springFrameworkSvg from "../media/spring-framework.svg";
-import springDataSvg from "../media/spring-data.svg";
-import springCloudSvg from "../media/spring-cloud.svg";
-import springDataFlowSvg from "../media/spring-data-flow.svg";
-import springSecuritySvg from "../media/spring-security.svg";
+import springBootSvg from "../media/card_icons/spring-boot.svg";
+import springFrameworkSvg from "../media/card_icons/spring-framework.svg";
+import springDataSvg from "../media/card_icons/spring-data.svg";
+import springCloudSvg from "../media/card_icons/spring-cloud.svg";
+import springDataFlowSvg from "../media/card_icons/spring-data-flow.svg";
+import springSecuritySvg from "../media/card_icons/spring-security.svg";
 
 export const CARDS_DEFAULT = [
   {
