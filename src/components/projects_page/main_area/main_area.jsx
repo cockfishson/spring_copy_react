@@ -3,7 +3,7 @@ import DescriptionText from "./description/description_text/description_text";
 import { DESCRIPTION_DATA } from "../../../data/description_content";
 import "./main_area.css";
 
-const MainArea = () => {
+const TitleArea = () => {
   return (
     <div className="description_box">
       <HeaderDescription title={DESCRIPTION_DATA.header_content} />
@@ -12,4 +12,4 @@ const MainArea = () => {
   );
 };
 
-export default MainArea;
+export default TitleArea;
