@@ -1,0 +1,27 @@
+.text_container_card {
+    display: inline-block;
+    width: 70%;
+}
+
+@media (max-width:1020px) {
+    .text_container_card {
+        width: 95%;
+        height: 50%;
+        margin: 0;
+        display: block;
+        padding-left: 2.5%;
+        padding-bottom: 60px;
+    }
+}
+
+@media (max-width:800px) {
+    .text_container_card {
+        width: 90%;
+        height: 50%;
+        margin: 0;
+        display: block;
+        padding-left: 5%;
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+}

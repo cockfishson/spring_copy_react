@@ -1,0 +1,28 @@
+.sub_txt_side:hover {
+    color: #6CB52D;
+}
+
+.sub_txt_side {
+    color: #98afae;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.submenu_side {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+@media (max-width:1020px) {
+
+    #DEVELOPMENT_tools {
+        color: #98afae;
+        font-size: 1.2rem;
+        padding-left: 0;
+        padding-bottom: 0;
+        padding-top: 2rem;
+    }
+}
