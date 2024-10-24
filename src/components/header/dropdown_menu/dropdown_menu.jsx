@@ -3,7 +3,7 @@ import MainItem from "./mainitem";
 
 const DropdownMenu = () => {
   return (
-    <ul class="dropdown_menu" id="dropdown_menu">
+    <ul class="dropdown_menu">
       {MENU_CONTENT.map((main_menu, index) => (
         <MainItem key={index} main_menu={main_menu} />
       ))}

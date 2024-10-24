@@ -4,7 +4,7 @@ const CardRow = ({ rowData }) => {
   return (
     <div class="card_row">
       {rowData.map((cardData) => (
-        <Cards cardsData={cardData} />
+        <Cards key={cardData.title} cardsData={cardData} />
       ))}
     </div>
   );

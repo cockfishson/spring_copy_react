@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { CARDS_DEFAULT } from "../../data/card_content";
 
 const SearchInput = ({ setCardsData }) => {
-  const [SearchParameters, SetSearchParameters] = useState("");
+  const [searchParameters, setSearchParameters] = useState("");
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      const trimmedSearch = SearchParameters.trim()
+      const trimmedSearch = searchParameters
+        .trim()
         .toLowerCase()
         .replace(/[.,@/#!$%^&*;:{}=\-_`~()]/g, "");
       if (trimmedSearch.length > 1) {
@@ -21,14 +22,13 @@ const SearchInput = ({ setCardsData }) => {
       }
     }, 300);
     return () => clearTimeout(delayDebounceFn);
-  }, [SearchParameters, setCardsData]);
+  }, [searchParameters, setCardsData]);
 
   return (
     <input
       className="search_bar"
       placeholder="Input search parameters"
-      id="search_bar"
-      onChange={(e) => SetSearchParameters(e.target.value)}
+      onChange={(e) => setSearchParameters(e.target.value)}
     />
   );
 };

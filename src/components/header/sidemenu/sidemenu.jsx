@@ -4,8 +4,7 @@ import MainItemSide from "./mainitemside";
 const Sidemenu = (isOpen) => {
   return (
     <ul
-      class="sidebar_menu"
-      id="sidebar_menu"
+      className="sidebar_menu"
       style={{ display: isOpen.isOpen ? "flex" : "none" }}
     >
       {MENU_CONTENT.map((main_menu_side, index) => (

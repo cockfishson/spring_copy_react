@@ -10,7 +10,6 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsBurgerOpen(!isBurgerOpen);
-    console.log(isBurgerOpen);
   };
   return (
     <nav className="header_menu">

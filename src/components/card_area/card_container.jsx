@@ -3,7 +3,7 @@ import CardRow from "./card_row";
 import "../../style.css";
 
 const CardContainer = ({ cardData }) => {
-  const [PairedData, SetPairedData] = useState([]);
+  const [pairedData, SetPairedData] = useState([]);
 
   useEffect(() => {
     if (Array.isArray(cardData)) {
@@ -18,8 +18,11 @@ const CardContainer = ({ cardData }) => {
   return (
     <div className="card_container" id="card_container">
       {cardData.length > 0 ? (
-        PairedData.map((cardPair, index) => (
-          <CardRow key={index} rowData={cardPair} />
+        pairedData.map((cardPair) => (
+          <CardRow
+            key={cardPair[0]?.title + cardPair[1]?.title}
+            rowData={cardPair}
+          />
         ))
       ) : (
         <h1>Invalid input, no data found!</h1>
