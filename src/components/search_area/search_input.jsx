@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CARDS_DEFAULT } from "../../data/card_content";
 
-const SearchInput = ({ SetCardsData }) => {
+const SearchInput = ({ setCardsData }) => {
   const [SearchParameters, SetSearchParameters] = useState("");
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -15,13 +15,13 @@ const SearchInput = ({ SetCardsData }) => {
             card_info.title.toLowerCase().includes(trimmedSearch)
           );
         });
-        SetCardsData(result);
+        setCardsData(result);
       } else {
-        SetCardsData(CARDS_DEFAULT);
+        setCardsData(CARDS_DEFAULT);
       }
     }, 300);
     return () => clearTimeout(delayDebounceFn);
-  }, [SearchParameters, SetCardsData]);
+  }, [SearchParameters, setCardsData]);
 
   return (
     <input

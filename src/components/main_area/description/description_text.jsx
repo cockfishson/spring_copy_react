@@ -1,5 +1,3 @@
-import React from "react";
-
 const DescriptionText = () => {
   return (
     <p class="decription">

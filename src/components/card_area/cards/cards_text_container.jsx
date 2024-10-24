@@ -1,4 +1,3 @@
-import React from "react";
 import CardHeader from "./card_header";
 import CardText from "./card_text";
 

@@ -6,16 +6,16 @@ import { CARDS_DEFAULT } from "../data/card_content";
 import { useState } from "react";
 
 const ProjectsPage = () => {
-  const [CardData, SetCardData] = useState(CARDS_DEFAULT);
-  const ChangeCardInfo = (NewCardData) => {
-    SetCardData(NewCardData);
+  const [cardData, setCardData] = useState(CARDS_DEFAULT);
+  const changeCardInfo = (NewCardData) => {
+    setCardData(NewCardData);
   };
   return (
     <div>
       <Header />
       <MainArea />
-      <SearchArea SetCardsData={ChangeCardInfo} />
-      <CardContainer CardData={CardData} />
+      <SearchArea setCardsData={changeCardInfo} />
+      <CardContainer cardData={cardData} />
     </div>
   );
 };

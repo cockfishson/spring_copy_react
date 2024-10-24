@@ -1,10 +1,9 @@
-import React from "react";
 import SearchInput from "./search_input";
 
-const SearchArea = ({ SetCardsData }) => {
+const SearchArea = ({ setCardsData }) => {
   return (
     <div className="search_container">
-      <SearchInput SetCardsData={SetCardsData} />
+      <SearchInput setCardsData={setCardsData} />
     </div>
   );
 };

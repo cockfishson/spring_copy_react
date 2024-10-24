@@ -1,5 +1,3 @@
-import React from "react";
-
 const Logo = () => {
   return (
     <div class="logo_wrap">

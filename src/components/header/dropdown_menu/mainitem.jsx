@@ -1,4 +1,3 @@
-import React from "react";
 import Submenu from "./submenu";
 
 const MainItem = ({ main_menu }) => {

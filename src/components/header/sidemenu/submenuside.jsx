@@ -1,5 +1,3 @@
-import React from "react";
-
 const SubmenuSide = ({ subs }) => {
   return (
     <ul className="submenu_side">

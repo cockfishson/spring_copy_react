@@ -1,4 +1,3 @@
-import React from "react";
 import { MENU_CONTENT } from "../../../data/header_content.js";
 import MainItem from "./mainitem";
 

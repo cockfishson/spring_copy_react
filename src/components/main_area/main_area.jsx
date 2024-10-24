@@ -1,4 +1,3 @@
-import React from "react";
 import HeaderDescription from "./description/header_description";
 import DescriptionText from "./description/description_text";
 import "../../style.css";

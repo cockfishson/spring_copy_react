@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SubmenuSide from "./submenuside";
 
 const MenuItemSide = ({ main_menu_side }) => {

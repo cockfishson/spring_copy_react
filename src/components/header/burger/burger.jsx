@@ -1,5 +1,3 @@
-import React from "react";
-
 const Burger = ({ toggleMenu }) => {
   return (
     <label className="hamburger" onClick={toggleMenu}>

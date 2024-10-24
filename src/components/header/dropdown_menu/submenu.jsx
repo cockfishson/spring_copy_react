@@ -1,5 +1,3 @@
-import React from "react";
-
 const Submenu = ({ subs }) => {
   return (
     <ul className="submenu">
