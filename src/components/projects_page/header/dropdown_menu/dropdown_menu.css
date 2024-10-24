@@ -1,0 +1,21 @@
+.dropdown_menu {
+    list-style-type: none;
+    padding: 0;
+    margin-right: 0;
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width:1200px) {
+    .dropdown_menu {
+        width: fit-content;
+        margin: 0;
+    }
+}
+
+@media (max-width:1020px) {
+    .dropdown_menu {
+        display: none;
+    }
+}

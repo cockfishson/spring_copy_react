@@ -1,0 +1,16 @@
+.decription {
+    width: 95%;
+    font-size: 20.8px;
+    line-height: 1.7;
+}
+
+@media (max-width:1020px) {
+    .decription {
+        font-size: 24px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        color: #2c2c2c;
+        max-width: 960px;
+        line-height: 1.5;
+    }
+}
