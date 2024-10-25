@@ -1,4 +1,4 @@
-import CardContainer from "./card_area/card_container";
+import CardContainer from "./card_container/card_container";
 import SearchArea from "./search_area/search_area";
 import { CARDS_DEFAULT } from "../../../data/card_content";
 import { useState, useCallback } from "react";
