@@ -17,7 +17,7 @@
 }
 
 .sub_txt {
-    display: inline-block;
+    display: block;
     padding: 8px 48px 6px 16px;
     margin: 0;
     text-decoration: none;
@@ -25,7 +25,6 @@
     position: relative;
     z-index: 100;
     white-space: nowrap;
-    vertical-align: middle;
 }
 
 .sub_txt:hover {
@@ -41,7 +40,7 @@
     color: #6CB52D;
 }
 
-#DEVELOPMENT_tools {
+.DEVELOPMENT_tools {
     display: block;
     padding: 8px 48px 6px 16px;
     margin: 0;
@@ -53,14 +52,12 @@
 }
 
 .inline_svg {
-    display: inline-block;
+    display: inline;
     height: 1rem;
     width: auto;
-    vertical-align: middle;
-    margin-left: 8px;
 }
 
-#special_p {
+.special_p {
     display: inline;
     padding-right: 8px;
 }
