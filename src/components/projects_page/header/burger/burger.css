@@ -1,0 +1,20 @@
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.hamburger div {
+    width: 23px;
+    height: 3px;
+    background-color: #333;
+    margin: 2px 0;
+}
+
+@media (max-width: 1020px) {
+    .hamburger {
+        display: flex;
+        z-index: 150;
+    }
+}

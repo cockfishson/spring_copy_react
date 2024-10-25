@@ -1,0 +1,37 @@
+.main_item {
+    flex-wrap: nowrap;
+    position: relative;
+    display: inline-block;
+    padding: 8 1.5px;
+    margin: 0;
+    z-index: 50;
+}
+
+.main_item:hover .submenu {
+    display: block;
+}
+
+.menu_txt {
+    flex-wrap: nowrap;
+    display: block;
+    padding: 10px 32px 8px 8px;
+    text-decoration: none;
+    color: #111;
+    font-size: .95rem;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    letter-spacing: 0.25px;
+    white-space: nowrap;
+}
+
+.menu_txt::after {
+    content: '›';
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    transform: rotate(90deg);
+    font-size: 1.5rem;
+    color: #111;
+    font-weight: 500;
+}
