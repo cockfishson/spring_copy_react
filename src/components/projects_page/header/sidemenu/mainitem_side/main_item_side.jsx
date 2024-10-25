@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SubmenuSide from "../submenuside/submenuside";
-import "./mainitemside.css";
+import SubmenuSide from "../submenu_side/submenu_side";
+import "./main_item_side.css";
 
 const MenuItemSide = ({ main_menu_side }) => {
   const [isOpen, setIsOpen] = useState(false);

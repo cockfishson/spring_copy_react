@@ -1,7 +1,7 @@
 import Header from "./header/header";
-import TitleArea from "./main_area/main_area";
-import SearchAndCardArea from "./SearchAndCardArea/searchandcardarea";
-import "./style.css";
+import TitleArea from "./title_area/title_area";
+import SearchAndCardArea from "./search_and_card_area/search_and_card_area";
+import "./projects_page.css";
 
 const ProjectsPage = () => {
   return (

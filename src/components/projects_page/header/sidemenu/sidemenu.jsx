@@ -1,5 +1,5 @@
 import { MENU_CONTENT } from "../../../../data/header_content.js";
-import MainItemSide from "./mainitemside/mainitemside.jsx";
+import MainItemSide from "./mainitem_side/main_item_side.jsx";
 import "./sidemenu.css";
 
 const Sidemenu = (isOpen) => {

@@ -1,4 +1,4 @@
-import "./submenuside.css";
+import "./submenu_side.css";
 
 const SubmenuSide = ({ subs }) => {
   return (

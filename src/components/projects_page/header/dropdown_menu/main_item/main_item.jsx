@@ -1,5 +1,5 @@
 import Submenu from "../submenu/submenu";
-import "./mainitem.css";
+import "./main_item.css";
 
 const MainItem = ({ main_menu }) => {
   return (

@@ -1,7 +1,7 @@
-import HeaderDescription from "./description/header_descriprion/header_description";
+import HeaderDescription from "./description/header_description/header_description";
 import DescriptionText from "./description/description_text/description_text";
 import { DESCRIPTION_DATA } from "../../../data/description_content";
-import "./main_area.css";
+import "./title_area.css";
 
 const TitleArea = () => {
   return (

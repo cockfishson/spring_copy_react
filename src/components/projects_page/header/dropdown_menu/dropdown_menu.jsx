@@ -1,5 +1,5 @@
 import { MENU_CONTENT } from "../../../../data/header_content.js";
-import MainItem from "./mainitem/mainitem.jsx";
+import MainItem from "./main_item/main_item.jsx";
 import "./dropdown_menu.css";
 
 const DropdownMenu = () => {

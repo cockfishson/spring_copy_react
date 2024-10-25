@@ -1,9 +1,9 @@
-import { ReactComponent as SpringBootSvg } from "../media/card_icons/spring-boot.svg";
-import { ReactComponent as SpringFrameworkSvg } from "../media/card_icons/spring-framework.svg";
-import { ReactComponent as SpringDataSvg } from "../media/card_icons/spring-data.svg";
-import { ReactComponent as SpringCloudSvg } from "../media/card_icons/spring-cloud.svg";
-import { ReactComponent as SpringDataFlowSvg } from "../media/card_icons/spring-data-flow.svg";
-import { ReactComponent as SpringSecuritySvg } from "../media/card_icons/spring-security.svg";
+import { ReactComponent as SpringBootSvg } from "../media/card_icons/spring_boot.svg";
+import { ReactComponent as SpringFrameworkSvg } from "../media/card_icons/spring_framework.svg";
+import { ReactComponent as SpringDataSvg } from "../media/card_icons/spring_data.svg";
+import { ReactComponent as SpringCloudSvg } from "../media/card_icons/spring_cloud.svg";
+import { ReactComponent as SpringDataFlowSvg } from "../media/card_icons/spring_data_flow.svg";
+import { ReactComponent as SpringSecuritySvg } from "../media/card_icons/spring_security.svg";
 
 export const CARDS_DEFAULT = [
   {
