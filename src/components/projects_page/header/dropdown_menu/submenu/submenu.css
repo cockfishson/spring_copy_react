@@ -17,7 +17,7 @@
 }
 
 .sub_txt {
-    display: block;
+    display: inline-block;
     padding: 8px 48px 6px 16px;
     margin: 0;
     text-decoration: none;
@@ -25,6 +25,7 @@
     position: relative;
     z-index: 100;
     white-space: nowrap;
+    vertical-align: middle;
 }
 
 .sub_txt:hover {
@@ -52,9 +53,11 @@
 }
 
 .inline_svg {
-    display: inline;
+    display: inline-block;
     height: 1rem;
     width: auto;
+    vertical-align: middle;
+    margin-left: 8px;
 }
 
 #special_p {

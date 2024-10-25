@@ -1,9 +1,9 @@
 import "./cards_image_container.css";
 
-const CardsImageContainer = ({ imgSrc }) => {
+const CardsImageContainer = ({ Icon }) => {
   return (
-    <div class="img_container_card">
-      <img src={imgSrc} class="card_image" alt={imgSrc} />
+    <div className="img_container_card">
+      {Icon && <Icon className="card_image" />}
     </div>
   );
 };
