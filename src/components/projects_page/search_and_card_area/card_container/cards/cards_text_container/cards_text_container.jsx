@@ -4,7 +4,7 @@ import "./cards_text_container.css";
 
 const CardsTextContainer = ({ title, description }) => {
   return (
-    <div class="text_container_card">
+    <div className="text_container_card">
       <CardHeader title={title} />
       <CardText description={description} />
     </div>

@@ -4,7 +4,7 @@ import "./dropdown_menu.css";
 
 const DropdownMenu = () => {
   return (
-    <ul class="dropdown_menu">
+    <ul className="dropdown_menu">
       {MENU_CONTENT.map((main_menu) => (
         <MainItem key={main_menu.main} main_menu={main_menu} />
       ))}

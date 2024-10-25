@@ -3,7 +3,7 @@ import CardsTextContainer from "./cards_text_container/cards_text_container";
 import "./cards.css";
 const Cards = ({ cardsData }) => {
   return (
-    <div class="card">
+    <div className="card">
       <CardsImageContainer Icon={cardsData.Icon} />
       <CardsTextContainer
         title={cardsData.title}
