@@ -5,7 +5,7 @@ import { ReactComponent as SpringCloudSvg } from "../../../media/card_icons/spri
 import { ReactComponent as SpringDataFlowSvg } from "../../../media/card_icons/spring_data_flow.svg";
 import { ReactComponent as SpringSecuritySvg } from "../../../media/card_icons/spring_security.svg";
 
-const CARDS_DEFAULT = [
+const cardsContentInitial = [
   {
     Icon: SpringBootSvg,
     title: "Spring Boot",
@@ -45,7 +45,7 @@ const CARDS_DEFAULT = [
 ];
 
 const initialState = {
-  cards: CARDS_DEFAULT,
+  cards: cardsContentInitial,
   searchTerm: "",
 };
 
