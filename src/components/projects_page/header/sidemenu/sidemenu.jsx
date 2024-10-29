@@ -1,11 +1,12 @@
-import { MENU_CONTENT } from "../../../../data/header_content.js";
+import { useSelector } from "react-redux";
 import MainItemSide from "./mainitem_side/main_item_side.jsx";
 import "./sidemenu.css";
 
 const Sidemenu = (isOpen) => {
+  const menuContent = useSelector((state) => state.headerContent);
   return (
     <ul className={!isOpen.isOpen ? "closed_side_bar" : "active_side_bar"}>
-      {MENU_CONTENT.map((main_menu_side, index) => (
+      {menuContent.map((main_menu_side, index) => (
         <MainItemSide key={index} main_menu_side={main_menu_side} />
       ))}
     </ul>

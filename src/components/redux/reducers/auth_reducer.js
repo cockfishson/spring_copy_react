@@ -1,4 +1,8 @@
 const initialState = {
+  users: [
+    { username: "admin", password: "1234" },
+    { username: "ZenoxGr", password: "labko__" },
+  ],
   isAuthenticated: false,
 };
 

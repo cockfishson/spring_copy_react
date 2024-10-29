@@ -1,4 +1,4 @@
-export const MENU_CONTENT = [
+const headerContentInitial = [
   {
     main: "Why Spring",
     subs: [
@@ -59,3 +59,9 @@ export const MENU_CONTENT = [
     subs: [{ title: "Overview" }, { title: "Events" }, { title: "Authors" }],
   },
 ];
+
+const headerContentReducer = (state = headerContentInitial, action) => {
+  return state;
+};
+
+export default headerContentReducer;
