@@ -1,4 +1,4 @@
-const headerContentInitial = [
+const initialHeaderContent = [
   {
     main: "Why Spring",
     subs: [
@@ -60,7 +60,11 @@ const headerContentInitial = [
   },
 ];
 
-const headerContentReducer = (state = headerContentInitial, action) => {
+const initialHeaderState = {
+  header: initialHeaderContent,
+};
+
+const headerContentReducer = (state = initialHeaderState, action) => {
   return state;
 };
 

@@ -3,7 +3,7 @@ import MainItem from "./main_item/main_item.jsx";
 import "./dropdown_menu.css";
 
 const DropdownMenu = () => {
-  const menuContent = useSelector((state) => state.headerContent);
+  const menuContent = useSelector((state) => state.headerContent.header);
   return (
     <ul className="dropdown_menu">
       {menuContent.map((main_menu) => (

@@ -1,10 +1,14 @@
-const titleAreaContentInitial = {
+const initialTitleAreaContent = {
   header_content: "Projects",
   text_content:
     "From configuration to security, web apps to big data—whatever the infrastructure needs of your application may be, there is a Spring Project to help you build it. Start small and use just what you need—Spring is modular by design.",
 };
 
-const titleAreaContentReducer = (state = titleAreaContentInitial, action) => {
+const initialTitleAreaState = {
+  titleArea: initialTitleAreaContent,
+};
+
+const titleAreaContentReducer = (state = initialTitleAreaState, action) => {
   return state;
 };
 

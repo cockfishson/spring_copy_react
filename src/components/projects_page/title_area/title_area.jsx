@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import "./title_area.css";
 
 const TitleArea = () => {
-  const titleAreaContent = useSelector((state) => state.titleAreaContent);
+  const titleAreaContent = useSelector(
+    (state) => state.titleAreaContent.titleArea
+  );
   return (
     <div className="description_box">
       <HeaderDescription title={titleAreaContent.header_content} />

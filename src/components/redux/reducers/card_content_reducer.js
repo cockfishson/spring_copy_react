@@ -5,7 +5,7 @@ import { ReactComponent as SpringCloudSvg } from "../../../media/card_icons/spri
 import { ReactComponent as SpringDataFlowSvg } from "../../../media/card_icons/spring_data_flow.svg";
 import { ReactComponent as SpringSecuritySvg } from "../../../media/card_icons/spring_security.svg";
 
-const cardsContentInitial = [
+const initialCardsContent = [
   {
     Icon: SpringBootSvg,
     title: "Spring Boot",
@@ -44,12 +44,12 @@ const cardsContentInitial = [
   },
 ];
 
-const initialState = {
-  cards: cardsContentInitial,
+const initialCardsState = {
+  cards: initialCardsContent,
   searchTerm: "",
 };
 
-const cardContentReducer = (state = initialState, action) => {
+const cardContentReducer = (state = initialCardsState, action) => {
   switch (action.type) {
     case "SET_SEARCH_STRING":
       return {

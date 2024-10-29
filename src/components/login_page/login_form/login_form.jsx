@@ -8,7 +8,7 @@ import "./login_form.css";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const formContent = useSelector((state) => state.formContent);
+  const formContent = useSelector((state) => state.formContent.loginForm);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

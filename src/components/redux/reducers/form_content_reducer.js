@@ -1,11 +1,15 @@
-const initialFormContent = {
+const initialLoginFormContntent = {
   headerForm: "Login",
   inputUsername: "Enter username",
   inputPassword: "Enter password",
   submitButton: "Submit",
 };
 
-const formContentReducer = (state = initialFormContent, action) => {
+const initialFormState = {
+  loginForm: initialLoginFormContntent,
+};
+
+const formContentReducer = (state = initialFormState, action) => {
   return state;
 };
 
