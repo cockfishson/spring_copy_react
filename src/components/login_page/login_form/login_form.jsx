@@ -10,27 +10,25 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const formContent = useSelector((state) => state.formContent.loginForm);
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
 
   const handleInputChange = (e) => {
-    if (e.target.name === "username") {
-      setUsername(e.target.value);
-    } else if (e.target.name === "password") {
-      setPassword(e.target.value);
-    }
+    const { name, value } = e.target;
+    setCredentials((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const action = loginCheck(username, password);
-    dispatch(action);
+    dispatch(loginCheck(credentials.username, credentials.password));
   };
 
   return (
-    <div className="login_form">
+    <form className="login_form" onSubmit={handleSubmit}>
       <LoginFormHeader formHeader={formContent.headerForm} />
-      <div className="login_form_input_area">
+      <fieldset className="login_form_input_area">
         <LoginFormInput
           name="username"
           placeholderValue={formContent.inputUsername}
@@ -42,12 +40,9 @@ export const LoginForm = () => {
           type="password"
           onChange={handleInputChange}
         />
-      </div>
-      <SubmitButtonForm
-        buttonText={formContent.submitButton}
-        onClick={handleSubmit}
-      />
-    </div>
+      </fieldset>
+      <SubmitButtonForm buttonText={formContent.submitButton} type="submit" />
+    </form>
   );
 };
 
