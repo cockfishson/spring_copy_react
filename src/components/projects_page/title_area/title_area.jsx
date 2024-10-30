@@ -1,12 +1,9 @@
 import HeaderDescription from "./description/header_description/header_description";
 import DescriptionText from "./description/description_text/description_text";
-import { useSelector } from "react-redux";
+import { titleAreaContent } from "../../../data/title_area_content";
 import "./title_area.css";
 
 const TitleArea = () => {
-  const titleAreaContent = useSelector(
-    (state) => state.titleAreaContent.titleArea
-  );
   return (
     <div className="description_box">
       <HeaderDescription title={titleAreaContent.header_content} />
