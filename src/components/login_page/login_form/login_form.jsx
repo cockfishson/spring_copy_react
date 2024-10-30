@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginCheck } from "../../redux/actions/actions";
+import { loginCheck } from "../../redux/auth/auth_actions";
 import "./login_form.css";
 import LoginFormHeader from "./login_form_header/login_form_header";
 import LoginFormInput from "./login_form_input/login_form_input";
@@ -22,6 +22,7 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(loginCheck(credentials.username, credentials.password));
     dispatch(loginCheck(credentials.username, credentials.password));
   };
 

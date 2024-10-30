@@ -1,7 +1,6 @@
 import { createStore, combineReducers } from "redux";
-import authReducer from "../reducers/auth_reducer";
-import cardContentReducer from "../reducers/card_content_reducer";
-
+import authReducer from "../auth/auth_reducer";
+import cardContentReducer from "../card/card_content_reducer";
 const rootReducer = combineReducers({
   auth: authReducer,
   cardContent: cardContentReducer,

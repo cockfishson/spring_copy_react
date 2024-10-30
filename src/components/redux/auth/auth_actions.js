@@ -1,4 +1,4 @@
-import { login, logout } from "../reducers/auth_reducer";
+import { login, logout } from "./auth_action_types";
 import store from "../store/store";
 
 export const loginCheck = (username, password) => {
@@ -8,8 +8,3 @@ export const loginCheck = (username, password) => {
   );
   return userFound ? login() : logout();
 };
-
-export const searchCards = (searchString) => ({
-  type: "SET_SEARCH_STRING",
-  payload: searchString,
-});
