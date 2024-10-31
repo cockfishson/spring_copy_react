@@ -1,2 +1,2 @@
-export const login = () => ({ type: "LOGIN" });
-export const logout = () => ({ type: "LOGOUT" });
+export const login = () => ({ type: "LOGIN", payload: { success: true } });
+export const logout = () => ({ type: "LOGOUT", payload: { success: false } });

@@ -11,24 +11,12 @@ const App = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route
-          path={ROUTES.LOGIN}
-          element={
-            !isAuthenticated ? <LoginPage /> : <Navigate to={ROUTES.HOME} />
-          }
-        />
+        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         <Route element={<ProtectedRoutes userAuth={isAuthenticated} />}>
           <Route path={ROUTES.HOME} element={<ProjectsPage />} />
+          <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
         </Route>
-        <Route
-          path="*"
-          element={
-            <Navigate
-              to={isAuthenticated ? ROUTES.HOME : ROUTES.LOGIN}
-              replace
-            />
-          }
-        />
+        <Route path="*" element={<Navigate to={ROUTES.LOGIN} replace />} />
       </Routes>
     </HashRouter>
   );
