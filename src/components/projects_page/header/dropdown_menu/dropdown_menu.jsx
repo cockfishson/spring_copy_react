@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
+import { menuContent } from "../../../../data/menu_content.js";
 import MainItem from "./main_item/main_item.jsx";
 import "./dropdown_menu.css";
 
 const DropdownMenu = () => {
-  const menuContent = useSelector((state) => state.headerContent.header);
   return (
     <ul className="dropdown_menu">
       {menuContent.map((main_menu) => (

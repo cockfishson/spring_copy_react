@@ -1,4 +1,4 @@
-export const selectFilteredCards = (state) => {
+export const getFilteredCards = (state) => {
   const { cards, searchTerm } = state.cardContent;
 
   if (!searchTerm.trim()) return cards;

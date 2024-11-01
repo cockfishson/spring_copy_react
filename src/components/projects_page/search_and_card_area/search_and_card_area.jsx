@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardContainer from "./card_container/card_container";
 import SearchArea from "./search_area/search_area";
-import { searchCards } from "../../redux/actions/actions";
-import { selectFilteredCards } from "../../redux/selectors/selectors";
+import { searchCards } from "../../redux/card/card_actions";
+import { getFilteredCards } from "../../redux/card/card_selectors";
 
 const SearchAndCardArea = () => {
   const dispatch = useDispatch();
-  const cardData = useSelector(selectFilteredCards);
+  const cardData = useSelector(getFilteredCards);
 
   const handleSearch = (query) => {
     dispatch(searchCards(query));

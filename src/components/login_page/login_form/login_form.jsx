@@ -1,53 +1,52 @@
-import { useDispatch, useSelector } from "react-redux";
-import { loginCheck } from "../../redux/actions/actions";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginCheck } from "../../redux/auth/auth_actions";
+import "./login_form.css";
 import LoginFormHeader from "./login_form_header/login_form_header";
 import LoginFormInput from "./login_form_input/login_form_input";
 import SubmitButtonForm from "./submit_button_form/submit_button_form";
-import { useState } from "react";
-import "./login_form.css";
+import { loginFormContent } from "../../../data/login_form_content";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const formContent = useSelector((state) => state.formContent.loginForm);
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
 
   const handleInputChange = (e) => {
-    if (e.target.name === "username") {
-      setUsername(e.target.value);
-    } else if (e.target.name === "password") {
-      setPassword(e.target.value);
-    }
+    const { name, value } = e.target;
+    setCredentials((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const action = loginCheck(username, password);
-    dispatch(action);
+    console.log(loginCheck(credentials.username, credentials.password));
+    dispatch(loginCheck(credentials.username, credentials.password));
   };
 
   return (
-    <div className="login_form">
-      <LoginFormHeader formHeader={formContent.headerForm} />
-      <div className="login_form_input_area">
+    <form className="login_form" onSubmit={handleSubmit}>
+      <LoginFormHeader formHeader={loginFormContent.headerForm} />
+      <fieldset className="login_form_input_area">
         <LoginFormInput
           name="username"
-          placeholderValue={formContent.inputUsername}
+          placeholderValue={loginFormContent.inputUsername}
           onChange={handleInputChange}
         />
         <LoginFormInput
           name="password"
-          placeholderValue={formContent.inputPassword}
+          placeholderValue={loginFormContent.inputPassword}
           type="password"
           onChange={handleInputChange}
         />
-      </div>
+      </fieldset>
       <SubmitButtonForm
-        buttonText={formContent.submitButton}
-        onClick={handleSubmit}
+        buttonText={loginFormContent.submitButton}
+        type="submit"
       />
-    </div>
+    </form>
   );
 };
 

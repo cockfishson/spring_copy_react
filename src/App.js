@@ -1,34 +1,36 @@
 import "./App.css";
 import ProjectsPage from "./components/projects_page/projects_page";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import LoginPage from "./components/login_page/login_page";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "./components/redux/reducers/auth_reducer";
+import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProtectedRoutes from "./components/protected_routes";
+import { ROUTES } from "./routes";
 
 const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(logout());
-  }, [dispatch]);
-
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
-          path="/"
+          path={ROUTES.LOGIN}
           element={
-            !isAuthenticated ? <LoginPage /> : <Navigate to="/projects" />
+            !isAuthenticated ? <LoginPage /> : <Navigate to={ROUTES.HOME} />
           }
         />
+        <Route element={<ProtectedRoutes userAuth={isAuthenticated} />}>
+          <Route path={ROUTES.HOME} element={<ProjectsPage />} />
+        </Route>
         <Route
-          path="/projects"
-          element={isAuthenticated ? <ProjectsPage /> : <Navigate to="/" />}
+          path="*"
+          element={
+            <Navigate
+              to={isAuthenticated ? ROUTES.HOME : ROUTES.LOGIN}
+              replace
+            />
+          }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

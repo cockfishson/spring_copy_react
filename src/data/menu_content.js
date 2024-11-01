@@ -1,4 +1,4 @@
-const initialHeaderContent = [
+export const menuContent = [
   {
     main: "Why Spring",
     subs: [
@@ -59,13 +59,3 @@ const initialHeaderContent = [
     subs: [{ title: "Overview" }, { title: "Events" }, { title: "Authors" }],
   },
 ];
-
-const initialHeaderState = {
-  header: initialHeaderContent,
-};
-
-const headerContentReducer = (state = initialHeaderState, action) => {
-  return state;
-};
-
-export default headerContentReducer;
