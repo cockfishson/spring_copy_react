@@ -1,10 +1,27 @@
 import { login, logout } from "./auth_action_types";
-import store from "../store/store";
 
 export const loginCheck = (username, password) => {
-  const users = store.getState().auth.users;
-  const userFound = users.find(
-    (user) => user.username === username && user.password === password
-  );
-  return userFound ? login() : logout();
+  return async (dispatch) => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        dispatch(login());
+      } else {
+        dispatch(logout());
+        alert(result.message);
+      }
+      return result;
+    } catch (error) {
+      console.error("Server conection error:", error);
+      dispatch(logout());
+      return { success: false };
+    }
+  };
 };

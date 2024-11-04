@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginCheck } from "../../redux/auth/auth_actions";
-import { useNavigate } from "react-router-dom"; // Add this import
+import { useNavigate } from "react-router-dom";
 import "./login_form.css";
 import LoginFormHeader from "./login_form_header/login_form_header";
 import LoginFormInput from "./login_form_input/login_form_input";
@@ -21,12 +21,12 @@ export const LoginForm = () => {
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = dispatch(
+    const res = await dispatch(
       loginCheck(credentials.username, credentials.password)
     );
-    if (res.payload.success) {
+    if (res.success) {
       navigate("/");
     }
   };
