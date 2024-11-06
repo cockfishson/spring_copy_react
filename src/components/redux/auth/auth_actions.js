@@ -10,18 +10,18 @@ export const loginCheck = (username, password) => {
         },
         body: JSON.stringify({ username, password }),
       });
+
       const result = await response.json();
+
       if (result.success) {
         dispatch(login());
       } else {
         dispatch(logout());
         alert(result.message);
       }
-      return result;
     } catch (error) {
-      console.error("Server conection error:", error);
+      console.error("Server connection error:", error);
       dispatch(logout());
-      return { success: false };
     }
   };
 };

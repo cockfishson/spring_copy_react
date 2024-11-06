@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loginCheck } from "../../redux/auth/auth_actions";
 import { useNavigate } from "react-router-dom";
 import "./login_form.css";
@@ -11,6 +11,7 @@ import { loginFormContent } from "../../../data/login_form_content";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -21,15 +22,16 @@ export const LoginForm = () => {
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await dispatch(
-      loginCheck(credentials.username, credentials.password)
-    );
-    if (res.success) {
+    dispatch(loginCheck(credentials.username, credentials.password));
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
       navigate("/");
     }
-  };
+  }, [isAuthenticated, navigate]);
 
   return (
     <form className="login_form" onSubmit={handleSubmit}>
