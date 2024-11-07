@@ -8,15 +8,24 @@ export const searchCards = (searchTerm = "") => {
           searchTerm
         )}`
       );
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          `${response.status} - ${errorData.message || "Failed to fetch cards"}`
+        );
+      }
       const cards = await response.json();
-
       dispatch({
         type: SET_CARDS,
         payload: cards,
       });
       return cards;
     } catch (error) {
-      console.error("Failed to fetch cards:", error);
+      console.error("Failed to fetch cards:", error.message);
+      dispatch({
+        type: SET_CARDS,
+        payload: [],
+      });
       return [];
     }
   };
