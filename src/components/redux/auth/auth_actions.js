@@ -19,7 +19,6 @@ export const loginCheck = (username, password) => {
       if (result.success) {
         dispatch(login());
       } else {
-        dispatch(logout());
         alert(result.message);
       }
     } catch (error) {
