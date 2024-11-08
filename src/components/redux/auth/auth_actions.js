@@ -18,9 +18,6 @@ export const loginCheck = (username, password) => {
 
       if (result.success) {
         dispatch(login());
-      } else {
-        console.warn("Authentication failed:", result.message);
-        alert(result.message);
       }
     } catch (error) {
       if (
