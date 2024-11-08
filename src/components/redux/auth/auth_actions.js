@@ -1,29 +1,39 @@
-import { login, logout } from "./auth_action_types";
+import { login } from "./auth_action_types";
+import axios from "axios";
 
 export const loginCheck = (username, password) => {
   return async (dispatch) => {
     try {
-      const response = await fetch(
+      const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/login`,
+        { username, password },
         {
-          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, password }),
         }
       );
 
-      const result = await response.json();
+      const result = response.data;
 
       if (result.success) {
         dispatch(login());
       } else {
+        console.warn("Authentication failed:", result.message);
         alert(result.message);
       }
     } catch (error) {
-      console.error("Server connection error:", error);
-      dispatch(logout());
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.status === 401
+      ) {
+        console.error("Unauthorized: Incorrect username or password.");
+        alert("Incorrect username or password. Please try again.");
+      } else {
+        console.error("Server connection error:", error.message);
+        alert("A server connection error occurred. Please try again later.");
+      }
     }
   };
 };
