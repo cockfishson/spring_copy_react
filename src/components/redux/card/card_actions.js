@@ -4,9 +4,9 @@ export const searchCards = (searchTerm = "") => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/cards/cards?searchString=${encodeURIComponent(
-          searchTerm
-        )}`
+        `${
+          process.env.REACT_APP_API_URL
+        }/cards/cards?searchString=${encodeURIComponent(searchTerm)}`
       );
       if (!response.ok) {
         const errorData = await response.json();
