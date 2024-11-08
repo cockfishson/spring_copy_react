@@ -20,13 +20,12 @@ export const loginCheck = (username, password) => {
         dispatch(login());
       }
     } catch (error) {
-      if (
-        axios.isAxiosError(error) &&
-        error.response &&
-        error.response.status === 401
-      ) {
-        console.error("Unauthorized: Incorrect username or password.");
-        alert("Incorrect username or password. Please try again.");
+      console.error(error.response.data);
+      if (axios.isAxiosError(error) && error.response) {
+        console.error(
+          `${error.response.status} - ${error.response.data.message}`
+        );
+        alert(`${error.response.status} - ${error.response.data.message}`);
       } else {
         console.error("Server connection error:", error.message);
         alert("A server connection error occurred. Please try again later.");
