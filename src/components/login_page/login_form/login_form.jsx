@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loginCheck } from "../../redux/auth/auth_actions";
+import { useNavigate } from "react-router-dom";
 import "./login_form.css";
 import LoginFormHeader from "./login_form_header/login_form_header";
 import LoginFormInput from "./login_form_input/login_form_input";
@@ -9,7 +10,8 @@ import { loginFormContent } from "../../../data/login_form_content";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -22,9 +24,14 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(loginCheck(credentials.username, credentials.password));
     dispatch(loginCheck(credentials.username, credentials.password));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <form className="login_form" onSubmit={handleSubmit}>

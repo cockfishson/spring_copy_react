@@ -1,10 +1,4 @@
-const initialLoginContent = [
-  { username: "admin", password: "1234" },
-  { username: "ZenoxGr", password: "labko__" },
-];
-
 const initialLoginState = {
-  users: initialLoginContent,
   isAuthenticated: false,
 };
 

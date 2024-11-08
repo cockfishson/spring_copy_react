@@ -1,1 +1,1 @@
-export const setSearchString = "SET_SEARCH_STRING";
+export const SET_CARDS = "SET_CARDS";

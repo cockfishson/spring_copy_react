@@ -4,7 +4,7 @@ import "./cards.css";
 const Cards = ({ cardsData }) => {
   return (
     <div className="card">
-      <CardsImageContainer Icon={cardsData.Icon} />
+      <CardsImageContainer image={cardsData.image} />
       <CardsTextContainer
         title={cardsData.title}
         description={cardsData.description}
