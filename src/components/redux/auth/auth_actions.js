@@ -4,23 +4,12 @@ import axios from "axios";
 export const loginCheck = (username, password) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/login`,
-        { username, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const result = response.data;
-
-      if (result.success) {
-        dispatch(login());
-      }
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
+        username,
+        password,
+      });
+      dispatch(login());
     } catch (error) {
-      console.error(error.response.data);
       if (axios.isAxiosError(error) && error.response) {
         console.error(
           `${error.response.status} - ${error.response.data.message}`
