@@ -1,32 +1,33 @@
 import { SET_CARDS } from "./card_action_types";
+import axios from "axios";
 
 export const searchCards = (searchTerm = "") => {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        `${
-          process.env.REACT_APP_API_URL
-        }/cards/cards?searchString=${encodeURIComponent(searchTerm)}`
+      const response = axios.get(
+        `${process.env.REACT_APP_API_URL}/cards/cards`,
+        {
+          params: {
+            searchString: searchTerm,
+          },
+        }
       );
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          `${response.status} - ${errorData.message || "Failed to fetch cards"}`
-        );
-      }
-      const cards = await response.json();
+      const cards = (await response).data;
       dispatch({
         type: SET_CARDS,
         payload: cards,
       });
       return cards;
     } catch (error) {
-      console.error("Failed to fetch cards:", error.message);
-      dispatch({
-        type: SET_CARDS,
-        payload: [],
-      });
-      return [];
+      if (axios.isAxiosError(error) && error.response) {
+        console.error(
+          `${error.response.status} - ${error.response.data.message}`
+        );
+        alert(`${error.response.status} - ${error.response.data.message}`);
+      } else {
+        console.error("Server connection error:", error.message);
+        alert("A server connection error occurred. Please try again later.");
+      }
     }
   };
 };
