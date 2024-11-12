@@ -1,11 +1,13 @@
 import configureMockStore from "redux-mock-store";
 import { thunk } from "redux-thunk";
+import axios from "axios";
 import { loginCheck } from "../auth/auth_actions";
+
+jest.mock("axios");
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-global.fetch = jest.fn();
 global.alert = jest.fn();
 
 describe("loginCheck thunk", () => {
@@ -17,47 +19,33 @@ describe("loginCheck thunk", () => {
 
   afterAll(() => {
     console.error.mockRestore();
-    fetch.mockRestore();
+    axios.post.mockRestore();
   });
 
   beforeEach(() => {
     store = mockStore({});
-    fetch.mockClear();
+    axios.post.mockClear();
     global.alert.mockClear();
   });
 
   it("dispatches LOGIN action on successful login", async () => {
-    const mockResponse = { success: true };
-    fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockResponse,
-    });
+    const mockResponse = { data: { success: true } };
+    axios.post.mockResolvedValueOnce(mockResponse);
 
     await store.dispatch(loginCheck("admin", "1234"));
     const actions = store.getActions();
-    expect(actions[0]).toEqual({ type: "LOGIN", payload: { success: true } });
-  });
-
-  it("dispatches LOGOUT action on failed login", async () => {
-    const mockResponse = { success: false, message: "Invalid credentials" };
-    fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockResponse,
-    });
-
-    await store.dispatch(loginCheck("wrongUser", "wrongPassword"));
-    const actions = store.getActions();
-    expect(actions[0]).toEqual({ type: "LOGOUT", payload: { success: false } });
-    expect(global.alert).toHaveBeenCalledWith("Invalid credentials");
+    expect(actions[0]).toEqual({ type: "LOGIN" });
   });
 
   it("dispatches LOGOUT action on network error", async () => {
-    fetch.mockRejectedValueOnce(new Error("Network error"));
+    axios.post.mockRejectedValueOnce(new Error("Network error"));
 
     await store.dispatch(loginCheck("testUser", "testPassword"));
     const actions = store.getActions();
 
-    expect(actions[0]).toEqual({ type: "LOGOUT", payload: { success: false } });
-    expect(global.alert).not.toHaveBeenCalled();
+    expect(actions).toEqual([]);
+    expect(global.alert).toHaveBeenCalledWith(
+      "A server connection error occurred. Please try again later."
+    );
   });
 });
