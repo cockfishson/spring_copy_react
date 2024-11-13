@@ -1,32 +1,30 @@
+import axios from "axios";
 import { SET_CARDS } from "./card_action_types";
+import { actionhandleError } from "../../../utils/action_error_handler";
 
 export const searchCards = (searchTerm = "") => {
   return async (dispatch) => {
     try {
-      const response = await fetch(
-        `${
-          process.env.REACT_APP_API_URL
-        }/cards/cards?searchString=${encodeURIComponent(searchTerm)}`
+      const token = localStorage.getItem("accessToken");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/cards/cards`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            searchString: searchTerm,
+          },
+        }
       );
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          `${response.status} - ${errorData.message || "Failed to fetch cards"}`
-        );
-      }
-      const cards = await response.json();
+      const cards = response.data;
       dispatch({
         type: SET_CARDS,
         payload: cards,
       });
       return cards;
     } catch (error) {
-      console.error("Failed to fetch cards:", error.message);
-      dispatch({
-        type: SET_CARDS,
-        payload: [],
-      });
-      return [];
+      actionhandleError(error);
     }
   };
 };

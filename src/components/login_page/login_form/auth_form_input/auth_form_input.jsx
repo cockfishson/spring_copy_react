@@ -1,6 +1,6 @@
-import "./login_form_input.css";
+import "./auth_form_input.css";
 
-export const LoginFormInput = ({
+export const AuthFormInput = ({
   name,
   placeholderValue,
   type = "text",
@@ -17,4 +17,4 @@ export const LoginFormInput = ({
   );
 };
 
-export default LoginFormInput;
+export default AuthFormInput;

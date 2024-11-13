@@ -1,0 +1,43 @@
+.logout_item_txt {
+    flex-wrap: nowrap;
+    display: block;
+    padding: 10px 32px 8px 8px;
+    text-decoration: none;
+    color: #c4303d;
+    font-size: .95rem;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    letter-spacing: 0.25px;
+    white-space: nowrap;
+}
+
+.logout_item {
+    flex-wrap: nowrap;
+    position: relative;
+    display: inline-block;
+    padding: 8 1.5px;
+    margin: 0;
+    z-index: 50;
+}
+
+@media (max-width:1020) {
+    .logout_item_txt {
+        border-bottom: 1px solid #EBF2F2;
+        padding-bottom: 10px;
+        color: #c4303d;
+        font-size: 2rem;
+        font-weight: 500;
+        width: 80%;
+        margin-bottom: 0%;
+    }
+
+    .logout_item {
+        flex-wrap: nowrap;
+        position: normal;
+        display: list-item;
+        padding: 0;
+        margin: 0;
+        z-index: 200;
+    }
+}

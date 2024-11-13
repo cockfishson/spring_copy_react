@@ -1,24 +1,54 @@
-import { login } from "./auth_action_types";
-import axios from "axios";
-
+import { axiosinstance } from "../api.config";
+import { login, logout } from "./auth_action_types";
+import { actionhandleError } from "../../../utils/action_error_handler";
 export const loginCheck = (username, password) => {
   return async (dispatch) => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
+      const response = await axiosinstance.post("/auth/login", {
         username,
         password,
       });
+      const { accessToken, refreshToken } = response.data;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       dispatch(login());
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        console.error(
-          `${error.response.status} - ${error.response.data.message}`
-        );
-        alert(`${error.response.status} - ${error.response.data.message}`);
-      } else {
-        console.error("Server connection error:", error.message);
-        alert("A server connection error occurred. Please try again later.");
-      }
+      actionhandleError(error);
     }
   };
+};
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    dispatch(logout());
+    window.location.href = "/login";
+  };
+};
+
+export const signupUser = ({
+  username,
+  password,
+  firstName,
+  lastName,
+  age,
+}) => {
+  //roughly ho this should look like at the end when I get my hands to backend
+  // return async (dispatch) => {
+  //   try {
+  //     await instance.post("/auth/signup", {
+  //       username,
+  //       password,
+  //       firstName,
+  //       lastName,
+  //       age,
+  //     });
+  //     alert("Signup successful! Please log in.");
+  //   } catch (error) {
+  //     actionhandleError(error)
+  //   }
+  // };
+  console.warn(username + password + firstName + lastName + age); //just so values are used somewhere
+  return () => {};
 };

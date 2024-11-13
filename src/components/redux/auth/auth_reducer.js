@@ -1,5 +1,5 @@
 const initialLoginState = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem("accessToken"),
 };
 
 const authReducer = (state = initialLoginState, action) => {

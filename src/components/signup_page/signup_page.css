@@ -1,0 +1,8 @@
+.signup_page {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #EBF2F2;
+    width: 100%;
+    height: 100vh;
+}

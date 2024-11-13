@@ -5,13 +5,19 @@
             "type": "node",
             "request": "launch",
             "name": "Debug Jest Tests",
-            "program": "${workspaceFolder}/node_modules/jest/bin/jest", 
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
             "args": [
                 "--runInBand",
+                "--config",
+                "${workspaceFolder}/jest.config.js",
+                "--testRegex",
                 "${file}"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+            },
             "env": {
                 "NODE_ENV": "test"
             }
