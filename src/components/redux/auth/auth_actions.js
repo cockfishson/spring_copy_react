@@ -1,5 +1,5 @@
 import { axiosinstance } from "../api.config";
-import { login, logout } from "./auth_action_types";
+import { login, logout, signupSuccess } from "./auth_action_types";
 import { actionhandleError } from "../../../utils/action_error_handler";
 export const loginCheck = (username, password) => {
   return async (dispatch) => {
@@ -30,25 +30,25 @@ export const logoutUser = () => {
 export const signupUser = ({
   username,
   password,
+  confirmPassword,
   firstName,
   lastName,
   age,
 }) => {
-  //roughly ho this should look like at the end when I get my hands to backend
-  // return async (dispatch) => {
-  //   try {
-  //     await instance.post("/auth/signup", {
-  //       username,
-  //       password,
-  //       firstName,
-  //       lastName,
-  //       age,
-  //     });
-  //     alert("Signup successful! Please log in.");
-  //   } catch (error) {
-  //     actionhandleError(error)
-  //   }
-  // };
-  console.warn(username + password + firstName + lastName + age); //just so values are used somewhere
-  return () => {};
+  return async (dispatch) => {
+    try {
+      await axiosinstance.post("/auth/signup", {
+        username,
+        password,
+        confirmPassword,
+        firstName,
+        lastName,
+        age,
+      });
+      dispatch(signupSuccess());
+    } catch (error) {
+      console.warn(error.message);
+      actionhandleError(error);
+    }
+  };
 };

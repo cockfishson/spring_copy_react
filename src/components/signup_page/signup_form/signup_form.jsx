@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signupUser } from "../../redux/auth/auth_actions";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +8,12 @@ import AuthFormHeader from "../../login_page/login_form/auth_form_header/auth_fo
 import ButtonForm from "../../login_page/login_form/submit_button_form/button_form";
 import { ROUTES } from "../../../routes";
 import { signupFormContent } from "../../../data/signup_form_content";
+import { useSelector } from "react-redux";
 
 export const SignupForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isSignedUp = useSelector((state) => state.auth.isSignupSuccessful);
   const [signupData, setSignupData] = useState({
     username: "",
     password: "",
@@ -20,7 +22,6 @@ export const SignupForm = () => {
     lastName: "",
     age: "",
   });
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSignupData((prevState) => ({ ...prevState, [name]: value }));
@@ -29,8 +30,13 @@ export const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signupUser(signupData));
-    navigate(ROUTES.LOGIN);
   };
+
+  useEffect(() => {
+    if (isSignedUp) {
+      navigate(ROUTES.LOGIN);
+    }
+  }, [isSignedUp, navigate]);
 
   const redirectToLogin = (e) => {
     e.preventDefault();
