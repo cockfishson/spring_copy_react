@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import "./signup_form.css";
 import AuthFormInput from "../../login_page/login_form/auth_form_input/auth_form_input";
 import AuthFormHeader from "../../login_page/login_form/auth_form_header/auth_form_header";
-import SubmitButtonForm from "../../login_page/login_form/submit_button_form/submit_button_form";
+import ButtonForm from "../../login_page/login_form/submit_button_form/button_form";
 import { ROUTES } from "../../../routes";
 import { signupFormContent } from "../../../data/signup_form_content";
-//TO-DO switch signup<->login
+
 export const SignupForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,11 +75,8 @@ export const SignupForm = () => {
           onChange={handleInputChange}
         />
       </fieldset>
-      <SubmitButtonForm
-        buttonText={signupFormContent.submitButton}
-        type="submit"
-      />
-      <SubmitButtonForm
+      <ButtonForm buttonText={signupFormContent.submitButton} type="submit" />
+      <ButtonForm
         buttonText={signupFormContent.switchButton}
         type="switch"
         onClick={redirectToLogin}
