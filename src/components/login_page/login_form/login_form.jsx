@@ -7,7 +7,7 @@ import AuthFormHeader from "./auth_form_header/auth_form_header";
 import AuthFormInput from "./auth_form_input/auth_form_input";
 import SubmitButtonForm from "./submit_button_form/submit_button_form";
 import { loginFormContent } from "../../../data/login_form_content";
-
+import { ROUTES } from "../../../routes";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,6 +33,11 @@ export const LoginForm = () => {
     }
   }, [isAuthenticated, navigate]);
 
+  const redirectToSignup = (e) => {
+    e.preventDefault();
+    navigate(ROUTES.SIGNUP);
+  };
+
   return (
     <form className="login_form" onSubmit={handleSubmit}>
       <AuthFormHeader formHeader={loginFormContent.headerForm} />
@@ -52,6 +57,11 @@ export const LoginForm = () => {
       <SubmitButtonForm
         buttonText={loginFormContent.submitButton}
         type="submit"
+      />
+      <SubmitButtonForm
+        buttonText={loginFormContent.switchButton}
+        type="switch"
+        onClick={redirectToSignup}
       />
     </form>
   );

@@ -6,7 +6,9 @@ import "./signup_form.css";
 import AuthFormInput from "../../login_page/login_form/auth_form_input/auth_form_input";
 import AuthFormHeader from "../../login_page/login_form/auth_form_header/auth_form_header";
 import SubmitButtonForm from "../../login_page/login_form/submit_button_form/submit_button_form";
-
+import { ROUTES } from "../../../routes";
+import { signupFormContent } from "../../../data/signup_form_content";
+//TO-DO switch signup<->login
 export const SignupForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,48 +29,61 @@ export const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signupUser(signupData));
-    navigate("/login");
+    navigate(ROUTES.LOGIN);
+  };
+
+  const redirectToLogin = (e) => {
+    e.preventDefault();
+    navigate(ROUTES.LOGIN);
   };
 
   return (
     <form className="signup_form" onSubmit={handleSubmit}>
-      <AuthFormHeader formHeader="Sign Up" />
+      <AuthFormHeader formHeader={signupFormContent.headerForm} />
       <fieldset className="signup_form_input_area">
         <AuthFormInput
           name="username"
-          placeholderValue="Username"
+          placeholderValue={signupFormContent.inputUsername}
           onChange={handleInputChange}
         />
         <AuthFormInput
           name="password"
-          placeholderValue="Password"
+          placeholderValue={signupFormContent.inputPassword}
           type="password"
           onChange={handleInputChange}
         />
         <AuthFormInput
           name="confirmPassword"
-          placeholderValue="Confirm Password"
+          placeholderValue={signupFormContent.inputRepeatPasswort}
           type="password"
           onChange={handleInputChange}
         />
         <AuthFormInput
           name="firstName"
-          placeholderValue="First Name"
+          placeholderValue={signupFormContent.inputName}
           onChange={handleInputChange}
         />
         <AuthFormInput
           name="lastName"
-          placeholderValue="Last Name"
+          placeholderValue={signupFormContent.inputSurname}
           onChange={handleInputChange}
         />
         <AuthFormInput
           name="age"
-          placeholderValue="Age"
+          placeholderValue={signupFormContent.inputAge}
           type="number"
           onChange={handleInputChange}
         />
       </fieldset>
-      <SubmitButtonForm buttonText="Sign Up" type="submit" />
+      <SubmitButtonForm
+        buttonText={signupFormContent.submitButton}
+        type="submit"
+      />
+      <SubmitButtonForm
+        buttonText={signupFormContent.switchButton}
+        type="switch"
+        onClick={redirectToLogin}
+      />
     </form>
   );
 };

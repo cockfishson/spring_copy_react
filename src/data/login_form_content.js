@@ -3,4 +3,5 @@ export const loginFormContent = {
   inputUsername: "Enter username",
   inputPassword: "Enter password",
   submitButton: "Submit",
+  switchButton: "Sign up",
 };
