@@ -100,7 +100,7 @@ export const SignupForm = () => {
         />
         {errors.age && <p className="error-message">{errors.age}</p>}
       </fieldset>
-
+      {errors.form && <p className="error-message">{errors.form}</p>}
       <ButtonForm buttonText={signupFormContent.submitButton} type="submit" />
       <ButtonForm
         buttonText={signupFormContent.switchButton}
