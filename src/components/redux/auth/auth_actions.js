@@ -46,9 +46,17 @@ export const signupUser = ({
         age,
       });
       dispatch(signupSuccess());
+      return null;
     } catch (error) {
-      console.warn(error.message);
-      actionhandleError(error);
+      if (error.response && error.response.status === 400) {
+        const errorMessages = error.response.data.details || {
+          form: error.response.data.message,
+        };
+        return errorMessages;
+      } else {
+        actionhandleError(error);
+        return {};
+      }
     }
   };
 };

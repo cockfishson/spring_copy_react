@@ -23,6 +23,13 @@
     height: 70vh;
 }
 
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+
 @media (max-width: 1020px) {
     .signup_form {
         width: 60vw;
