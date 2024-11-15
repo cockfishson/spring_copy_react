@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupUser } from "../../redux/auth/auth_actions";
+import { signUpUser } from "../../redux/auth/auth_actions";
 import { useNavigate } from "react-router-dom";
-import "./signup_form.css";
+import "./sign_up_form.css";
 import AuthFormInput from "../../login_page/login_form/auth_form_input/auth_form_input";
 import AuthFormHeader from "../../login_page/login_form/auth_form_header/auth_form_header";
 import ButtonForm from "../../login_page/login_form/submit_button_form/button_form";
 import { ROUTES } from "../../../routes";
-import { signupFormContent } from "../../../data/signup_form_content";
+import { signUpFormContent } from "../../../data/sign_up_form_content";
 
-export const SignupForm = () => {
+export const SignUpForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isSignedUp = useSelector((state) => state.auth.isSignupSuccessful);
-
-  const [signupData, setSignupData] = useState({
+  const [signUpData, setSignUpData] = useState({
     username: "",
     password: "",
     confirmPassword: "",
@@ -23,44 +21,36 @@ export const SignupForm = () => {
     age: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const errors = useSelector((state) => state.auth.signUpErrors);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setSignupData((prevState) => ({ ...prevState, [name]: value }));
+    setSignUpData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const errorMessages = await dispatch(signupUser(signupData));
-    setErrors(errorMessages || {});
+    dispatch(signUpUser(signUpData, navigate));
   };
 
-  useEffect(() => {
-    if (isSignedUp) {
-      navigate(ROUTES.LOGIN);
-    }
-  }, [isSignedUp, navigate]);
-
-  const redirectToLogin = (e) => {
-    e.preventDefault();
+  const redirectToLogin = () => {
     navigate(ROUTES.LOGIN);
   };
 
   return (
-    <form className="signup_form" onSubmit={handleSubmit}>
-      <AuthFormHeader formHeader={signupFormContent.headerForm} />
-      <fieldset className="signup_form_input_area">
+    <form className="sign_up_form" onSubmit={handleSubmit}>
+      <AuthFormHeader formHeader={signUpFormContent.headerForm} />
+      <fieldset className="sign_up_form_input_area">
         <AuthFormInput
           name="username"
-          placeholderValue={signupFormContent.inputUsername}
+          placeholderValue={signUpFormContent.inputUsername}
           onChange={handleInputChange}
         />
         {errors.username && <p className="error-message">{errors.username}</p>}
 
         <AuthFormInput
           name="password"
-          placeholderValue={signupFormContent.inputPassword}
+          placeholderValue={signUpFormContent.inputPassword}
           type="password"
           onChange={handleInputChange}
         />
@@ -68,7 +58,7 @@ export const SignupForm = () => {
 
         <AuthFormInput
           name="confirmPassword"
-          placeholderValue={signupFormContent.inputRepeatPasswort}
+          placeholderValue={signUpFormContent.inputRepeatPassword}
           type="password"
           onChange={handleInputChange}
         />
@@ -78,7 +68,7 @@ export const SignupForm = () => {
 
         <AuthFormInput
           name="firstName"
-          placeholderValue={signupFormContent.inputName}
+          placeholderValue={signUpFormContent.inputName}
           onChange={handleInputChange}
         />
         {errors.firstName && (
@@ -87,23 +77,23 @@ export const SignupForm = () => {
 
         <AuthFormInput
           name="lastName"
-          placeholderValue={signupFormContent.inputSurname}
+          placeholderValue={signUpFormContent.inputSurname}
           onChange={handleInputChange}
         />
         {errors.lastName && <p className="error-message">{errors.lastName}</p>}
 
         <AuthFormInput
           name="age"
-          placeholderValue={signupFormContent.inputAge}
+          placeholderValue={signUpFormContent.inputAge}
           type="number"
           onChange={handleInputChange}
         />
         {errors.age && <p className="error-message">{errors.age}</p>}
       </fieldset>
       {errors.form && <p className="error-message">{errors.form}</p>}
-      <ButtonForm buttonText={signupFormContent.submitButton} type="submit" />
+      <ButtonForm buttonText={signUpFormContent.submitButton} type="submit" />
       <ButtonForm
-        buttonText={signupFormContent.switchButton}
+        buttonText={signUpFormContent.switchButton}
         type="button"
         onClick={redirectToLogin}
       />
@@ -111,4 +101,4 @@ export const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SignUpForm;

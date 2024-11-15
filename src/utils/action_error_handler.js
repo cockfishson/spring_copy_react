@@ -1,4 +1,4 @@
-export const actionhandleError = (error) => {
+export const actionHandleError = (error) => {
   if (error.response) {
     const errorMessage = `${error.response.status} - ${error.response.data.message}`;
     console.error(errorMessage);

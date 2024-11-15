@@ -1,6 +1,6 @@
 const initialAuthState = {
   isAuthenticated: !!localStorage.getItem("accessToken"),
-  isSignupSuccessful: false,
+  signUpErrors: {},
 };
 
 const authReducer = (state = initialAuthState, action) => {
@@ -10,7 +10,9 @@ const authReducer = (state = initialAuthState, action) => {
     case "LOGOUT":
       return { ...state, isAuthenticated: false };
     case "SIGNUP_SUCCESS":
-      return { ...state, isSignupSuccessful: true };
+      return { ...state, signUpErrors: {} };
+    case "SIGNUP_FAILURE":
+      return { ...state, signUpErrors: action.payload };
     default:
       return state;
   }

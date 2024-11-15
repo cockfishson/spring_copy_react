@@ -1,10 +1,18 @@
-import { axiosinstance } from "../api.config";
-import { login, logout, signupSuccess } from "./auth_action_types";
-import { actionhandleError } from "../../../utils/action_error_handler";
-export const loginCheck = (username, password) => {
+import { axiosInstance } from "../api.config";
+import axios from "axios";
+import {
+  login,
+  logout,
+  signUpSuccess,
+  signUpFailure,
+} from "./auth_action_types";
+import { actionHandleError } from "../../../utils/action_error_handler";
+import { ROUTES } from "../../../routes";
+
+export const loginCheck = (username, password, navigate) => {
   return async (dispatch) => {
     try {
-      const response = await axiosinstance.post("/auth/login", {
+      const response = await axiosInstance.post("/auth/login", {
         username,
         password,
       });
@@ -12,8 +20,9 @@ export const loginCheck = (username, password) => {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
       dispatch(login());
+      navigate(ROUTES.HOME);
     } catch (error) {
-      actionhandleError(error);
+      actionHandleError(error);
     }
   };
 };
@@ -27,35 +36,23 @@ export const logoutUser = () => {
   };
 };
 
-export const signupUser = ({
-  username,
-  password,
-  confirmPassword,
-  firstName,
-  lastName,
-  age,
-}) => {
+export const signUpUser = (signupData, navigate) => {
   return async (dispatch) => {
     try {
-      await axiosinstance.post("/auth/signup", {
-        username,
-        password,
-        confirmPassword,
-        firstName,
-        lastName,
-        age,
-      });
-      dispatch(signupSuccess());
-      return null;
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/signup`,
+        signupData
+      );
+      dispatch(signUpSuccess());
+      navigate(ROUTES.LOGIN);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const errorMessages = error.response.data.details || {
           form: error.response.data.message,
         };
-        return errorMessages;
+        dispatch(signUpFailure(errorMessages));
       } else {
-        actionhandleError(error);
-        return {};
+        actionHandleError(error);
       }
     }
   };

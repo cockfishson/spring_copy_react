@@ -1,4 +1,4 @@
-.signup_form {
+.sign_up_form {
     width: 40vw;
     height: 85vh;
     background-color: white;
@@ -12,7 +12,7 @@
     box-sizing: border-box;
 }
 
-.signup_form_input_area {
+.sign_up_form_input_area {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,13 +31,13 @@
 
 
 @media (max-width: 1020px) {
-    .signup_form {
+    .sign_up_form {
         width: 60vw;
     }
 }
 
 @media (max-width: 800px) {
-    .signup_form {
+    .sign_up_form {
         width: 80vw;
     }
 }
