@@ -1,6 +1,6 @@
 import axios from "axios";
 import { SET_CARDS } from "./card_action_types";
-import { actionhandleError } from "../../../utils/action_error_handler";
+import { actionHandleError } from "../../../utils/action_error_handler";
 
 export const searchCards = (searchTerm = "") => {
   return async (dispatch) => {
@@ -24,7 +24,7 @@ export const searchCards = (searchTerm = "") => {
       });
       return cards;
     } catch (error) {
-      actionhandleError(error);
+      actionHandleError(error);
     }
   };
 };

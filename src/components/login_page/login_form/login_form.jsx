@@ -1,17 +1,16 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { loginCheck } from "../../redux/auth/auth_actions";
 import { useNavigate } from "react-router-dom";
 import "./login_form.css";
 import AuthFormHeader from "./auth_form_header/auth_form_header";
 import AuthFormInput from "./auth_form_input/auth_form_input";
-import SubmitButtonForm from "./submit_button_form/submit_button_form";
+import ButtonForm from "./submit_button_form/button_form";
 import { loginFormContent } from "../../../data/login_form_content";
-
+import { ROUTES } from "../../../routes";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -24,14 +23,12 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginCheck(credentials.username, credentials.password));
+    dispatch(loginCheck(credentials.username, credentials.password, navigate));
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
+  const redirectToSignUp = () => {
+    navigate(ROUTES.SIGN_UP);
+  };
 
   return (
     <form className="login_form" onSubmit={handleSubmit}>
@@ -49,9 +46,11 @@ export const LoginForm = () => {
           onChange={handleInputChange}
         />
       </fieldset>
-      <SubmitButtonForm
-        buttonText={loginFormContent.submitButton}
-        type="submit"
+      <ButtonForm buttonText={loginFormContent.submitButton} type="submit" />
+      <ButtonForm
+        buttonText={loginFormContent.switchButton}
+        type="button"
+        onClick={redirectToSignUp}
       />
     </form>
   );
